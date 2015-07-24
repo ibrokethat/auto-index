@@ -1,0 +1,45 @@
+{
+  "name": "auto-index",
+  "description": "auto index",
+  "version": "1.0.0",
+  "author": "si@ibrokethat.com",
+  "contributors": [
+    {
+      "name": "Simon Jefford",
+      "email": "si@ibrokethat.com"
+    }
+  ],
+  "dependencies": {
+    "babel": "^5.8.3",
+    "co": "^4.6.0",
+    "co-fs": "^1.2.0",
+    "config": "^1.14.0",
+    "js-yaml": "^3.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.4"
+  },
+  "keywords": [
+    "ibrokethat",
+    "auto index",
+    "es6"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ibrokethat/auto-index"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel ./*.js --out-dir lib --source-maps",
+    "build-watch": "./node_modules/.bin/babel ./*.js --out-dir lib --source-maps -w",
+    "prepublish": "npm prune",
+    "postinstall": "npm run build",
+    "test": "./node_modules/.bin/mocha --compilers js:babel/register --harmony --colors --recursive -R spec --ui bdd ./test/**/*.test.js --NODE_ENV=test"
+  },
+  "engines": {
+    "iojs": ">=1.x.x",
+    "node": ">=0.12.x"
+  }
+}
