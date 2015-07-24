@@ -1,39 +1,58 @@
 Auto Index
 
+  Auto generate index files to reduce boiler plate code.
+
+  Use case: commonjs require-all() type imports for ES6 modules
+
 Install
 
   npm install @ibrokethat/auto-index
 
 Usage
 
-  //   assume an app structure of
+  //  add the following to .gitignore
+  auto.index.js
 
-  entities/
-    media.js
-    user.js
-    etc...
-  server,js
+
+  //   assume an app structure of
+  app/
+    entities/
+      media.js
+      user.js
+      etc...
+    server.js
+
+
+  //  set appPath in your config.yaml, json, etc
+  appPath: app
+
 
   //  create a file to indicate use of index generation
-
-  touch entities/auto.index.named
+  //  the filename contains a reference to the export type of the modules
+  //  to be indexed
+  touch app/entities/auto.index.named
+  OR
+  touch app/entities/auto.index.default
 
 
   //  at the very top of server.js
-
   import '@ibrokethat/auto-index';
 
-  //  then else where
 
+  //  then elsewhere
   import * as entities from './entities/auto.index';
 
-  entities.media.xxx
-  entities.user.xxx
 
-  //  all files in a directory must have either named exports OR default exports only
+  //  entities is now an object containing the exports of the files
+  entities.media;
+  entities.user;
 
-  touch entities/auto.index.named
-  touch entities/auto.index.default
+
+
+Notes
+
+  all files in a directory must have either named exports OR one default export
+
 
 
 Test
