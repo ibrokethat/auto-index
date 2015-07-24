@@ -1,15 +1,18 @@
-Auto Index
+# Auto Index
 
   Auto generate index files to reduce boiler plate code.
 
   Use case: commonjs require-all() type imports for ES6 modules
 
-Install
+## Install
 
+  ```
   npm install @ibrokethat/auto-index
+  ```
 
-Usage
+## Usage
 
+  ```
   //  add the following to .gitignore
   auto.index.js
 
@@ -46,24 +49,27 @@ Usage
   //  entities is now an object containing the exports of the files
   entities.media;
   entities.user;
+  ```
 
 
 
-Notes
+### Caveat
 
   all files in a directory must have either named exports OR one default export
 
 
 
-Test
+## Test
 
+  ```
   git clone git@github.com/ibrokethat/auto-index
   cd auto-index
   npm i
   npm test
+  ```
 
 
-License
+## License
 
 (The MIT License)
 
