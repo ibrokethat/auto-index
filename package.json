@@ -36,7 +36,7 @@
     "build-watch": "./node_modules/.bin/babel ./*.js --out-dir lib --source-maps -w",
     "prepublish": "npm prune",
     "postinstall": "npm run build",
-    "test": "./node_modules/.bin/mocha --compilers js:babel/register --harmony --colors --recursive -R spec --ui bdd ./test/**/*.test.js --NODE_ENV=test"
+    "test": "./node_modules/.bin/mocha --compilers js:babel/register --harmony --colors --recursive -R spec --ui bdd ./test/**/*.test.js --NODE_ENV=test --ALLOW_CONFIG_MUTATIONS=true"
   },
   "engines": {
     "iojs": ">=1.x.x",

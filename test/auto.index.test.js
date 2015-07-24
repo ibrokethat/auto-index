@@ -2,8 +2,8 @@ import co from 'co';
 import fs from 'co-fs';
 import assert from 'assert';
 import sinon from 'sinon';
+import CONF from 'config';
 import underTest from '../index';
-
 import {expect} from 'chai';
 
 
@@ -14,7 +14,37 @@ let files = {
 };
 
 
-describe("auto index", () => {
+describe("auto index failure", () => {
+
+  var appPath;
+
+  beforeEach(()  =>  {
+
+    appPath = CONF.appPath;
+
+    delete CONF.appPath;
+
+  });
+
+
+  afterEach(() => {
+
+    CONF.appPath = appPath;
+
+  });
+
+
+  it('should throw a reference error if no appPath is specified in the config', () => {
+
+    expect(underTest).to.throw(ReferenceError);
+
+  });
+
+
+});
+
+
+describe("auto index success", () => {
 
   beforeEach(()  =>  {
 
@@ -23,17 +53,10 @@ describe("auto index", () => {
   });
 
 
-  afterEach((done) => {
-
-    co(function* () {
-
-      yield fs.unlink(files.namedIndex);
-      yield fs.unlink(files.defaultIndex);
-
-      done();
-    });
+  afterEach(() => {
 
   });
+
 
   it('should create index files in the correct directories', (done) => {
 

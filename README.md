@@ -1,6 +1,5 @@
 Auto Index
 
-
 Install
 
   npm install @ibrokethat/auto-index
